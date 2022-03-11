@@ -23,13 +23,17 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Пользователь</th>
+            <th scope="col">Название</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Адрес</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${users}" var="user">
+        <c:forEach items="${accidents}" var="accident">
             <tr>
-                <td><c:out value="${user}"/></td>
+                <td><c:out value="${accident.name}"/></td>
+                <td><c:out value="${accident.text}"/></td>
+                <td><c:out value="${accident.address}"/></td>
         </c:forEach>
         </tbody>
     </table>
