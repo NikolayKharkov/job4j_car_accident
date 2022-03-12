@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.job4j.services.AccidentService;
 
-import java.util.Arrays;
-
 @Controller
 public class IndexControl {
 
