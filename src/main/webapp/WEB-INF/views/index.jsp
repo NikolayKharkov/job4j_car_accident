@@ -19,7 +19,16 @@
     <title>Accident</title>
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <a href="<c:url value='/create'/>">Добавить инцидент</a>
+    </div>
+</div>
 <div class="card-body">
+    <div class="card-header">
+        Инциденты
+    </div>
+    <div class="card-body">
     <table class="table">
         <thead>
         <tr>
@@ -30,13 +39,15 @@
         </thead>
         <tbody>
         <c:forEach items="${accidents}" var="accident">
-            <tr>
-                <td><c:out value="${accident.name}"/></td>
-                <td><c:out value="${accident.text}"/></td>
-                <td><c:out value="${accident.address}"/></td>
-        </c:forEach>
+        <tr>
+            <td><c:out value="${accident.name}"/></td>
+            <td><c:out value="${accident.text}"/></td>
+            <td><c:out value="${accident.address}"/></td>
+            </c:forEach>
         </tbody>
     </table>
+    </div>
+</div>
 </div>
 </body>
 </html>
