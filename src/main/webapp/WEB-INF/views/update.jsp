@@ -28,7 +28,7 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Обновить инцедент.
+                Обновить инцедент
             </div>
             <form action="<c:url value='/save?id=${accident.id}'/>" method='POST'>
                 <div class="form-group">
@@ -38,6 +38,14 @@
                     <input required type="text" class="form-control" name="text" value="${accident.text}">
                     <label>Адрес</label>
                     <input required type="text" class="form-control" name="address" value="${accident.address}">
+                    <div class="form-group">
+                        <label>Тип:</label>
+                        <select class="form-control" name="type.id">
+                            <c:forEach items="${types}" var="type">
+                                <option value="${type.id}"><c:out value="${type.name}"/></option>
+                            </c:forEach>
+                        </select>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Обновить</button>
             </form>

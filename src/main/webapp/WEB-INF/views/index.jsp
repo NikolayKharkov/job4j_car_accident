@@ -34,6 +34,7 @@
         <thead>
         <tr>
             <th scope="col">Название</th>
+            <th scope="col">Тип</th>
             <th scope="col">Описание</th>
             <th scope="col">Адрес</th>
         </tr>
@@ -47,6 +48,7 @@
                 </a>
                 <c:out value="${accident.name}"/>
             </td>
+            <td><c:out value="${accident.type.name}"/></td>
             <td><c:out value="${accident.text}"/></td>
             <td><c:out value="${accident.address}"/></td>
             </c:forEach>

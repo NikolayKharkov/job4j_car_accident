@@ -28,16 +28,24 @@
   <div class="row">
     <div class="card" style="width: 100%">
       <div class="card-header">
-        Новый инцедент.
+        Новый инцедент
       </div>
       <form action="<c:url value='/save'/>" method='POST'>
         <div class="form-group">
-          <label>Название</label>
+          <label>Название:</label>
           <input required type="text" class="form-control" name="name" placeholder="Укажите название инцедента...">
-          <label>Описание</label>
+          <label>Описание:</label>
           <input required type="text" class="form-control" name="text" placeholder="Укажите описание инцедента...">
-          <label>Адрес</label>
+          <label>Адрес:</label>
           <input required type="text" class="form-control" name="address" placeholder="Укажите адрес...">
+          <div class="form-group">
+            <label>Тип:</label>
+            <select class="form-control" name="type.id">
+              <c:forEach items="${types}" var="type">
+                <option value="${type.id}"><c:out value="${type.name}"/></option>
+              </c:forEach>
+            </select>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary">Сохранить</button>
       </form>
