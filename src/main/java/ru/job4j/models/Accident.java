@@ -1,15 +1,25 @@
 package ru.job4j.models;
 
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
+@Table(name = "accidents")
 public class Accident {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String text;
     private String address;
+    @ManyToOne
+    @JoinColumn(name = "type_id", foreignKey = @ForeignKey(name = "AccidentType_ID_FK"))
     private AccidentType type;
-    private Set<Rule> rules;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Rule> rules = new HashSet<>();
 
     public static Accident of(int id, String name, String text, String address, AccidentType type, Set<Rule> rules) {
         Accident accident = new Accident();
@@ -60,6 +70,10 @@ public class Accident {
 
     public void setRules(Set<Rule> rules) {
         this.rules = rules;
+    }
+
+    public void addRule(Rule rule) {
+        this.rules.add(rule);
     }
 
     @Override

@@ -48,7 +48,7 @@
           </div>
           <div class="form-group">
             <label>Статьи:</label>
-            <select class="form-control" name="rIds" multiple>
+            <select class="form-control" name="rIds" multiple required>
               <c:forEach items="${rules}" var="rule">
                 <option value="${rule.id}"><c:out value="${rule.name}"/></option>
               </c:forEach>
