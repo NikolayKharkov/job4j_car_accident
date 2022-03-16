@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@NamedEntityGraph(name = "Accident.rules",
+        attributeNodes = @NamedAttributeNode("rules")
+)
 @Entity
 @Table(name = "accidents")
 public class Accident {
@@ -18,7 +21,12 @@ public class Accident {
     @ManyToOne
     @JoinColumn(name = "type_id", foreignKey = @ForeignKey(name = "AccidentType_ID_FK"))
     private AccidentType type;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    @JoinTable(
+            name = "accidents_rules",
+            joinColumns = @JoinColumn(name = "accident_id"),
+            inverseJoinColumns = @JoinColumn(name = "rules_id")
+    )
     private Set<Rule> rules = new HashSet<>();
 
     public static Accident of(int id, String name, String text, String address, AccidentType type, Set<Rule> rules) {
@@ -110,5 +118,4 @@ public class Accident {
     public void setType(AccidentType type) {
         this.type = type;
     }
-
 }

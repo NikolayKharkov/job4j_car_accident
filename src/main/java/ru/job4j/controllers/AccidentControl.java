@@ -18,7 +18,6 @@ public class AccidentControl {
     @Autowired
     private AccidentService accidentService;
 
-
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("accidents", accidentService.getAccidents());
