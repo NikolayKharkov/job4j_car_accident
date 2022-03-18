@@ -2,6 +2,7 @@ package ru.job4j.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.models.Accident;
 import ru.job4j.models.AccidentType;
 import ru.job4j.models.Rule;
@@ -24,13 +25,14 @@ public class AccidentService {
     @Autowired
     private TypeRepository typeRepository;
 
+    @Transactional
     public Accident create(Accident accident, String[] rules) {
-        Arrays.stream(rules).map(id -> ruleRepository.findById(Integer.parseInt(id)).get()).forEach(accident::addRule);
+        setRulesToAccident(accident, rules);
         return accidentRepository.save(accident);
     }
 
     public List<Accident> getAccidents() {
-        return (List<Accident>) accidentRepository.findAll();
+        return accidentRepository.findAllWithJoinFetch();
     }
 
     public List<AccidentType> getAccidentTypes() {
@@ -42,6 +44,13 @@ public class AccidentService {
     }
 
     public Accident findAccidentById(int id) {
-        return accidentRepository.findById(id);
+        return accidentRepository.findByIdWithJoinFetch(id).get();
+    }
+
+    private void setRulesToAccident(Accident accident, String[] rules) {
+        Arrays
+                .stream(rules)
+                .map(id -> ruleRepository.findById(Integer.parseInt(id)).get())
+                .forEach(accident::addRule);
     }
 }
