@@ -3,12 +3,8 @@ package ru.job4j.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.job4j.models.Accident;
-import ru.job4j.models.AccidentType;
-import ru.job4j.models.Rule;
-import ru.job4j.repositories.data.AccidentRepository;
-import ru.job4j.repositories.data.RuleRepository;
-import ru.job4j.repositories.data.TypeRepository;
+import ru.job4j.models.*;
+import ru.job4j.repositories.data.*;
 
 import java.util.Arrays;
 import java.util.List;

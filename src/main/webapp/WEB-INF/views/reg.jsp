@@ -17,27 +17,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <title>Car_Accident/Log</title>
+    <title>Car_Accident/Reg</title>
 </head>
 <body>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Авторизация
+                Регистрация
             </div>
             <div class="card-body">
-                <form name='login' action="<c:url value='/login'/>" method='POST'>
+                <form name='login' action="<c:url value='/reg'/>" method='POST'>
                     <div class="form-group">
-                        <label>Почта</label>
-                        <input required type="text" class="form-control" name="username" placeholder="Введите имя">
+                        <label>Имя</label>
+                        <input required type="text" class="form-control" name="username" placeholder="Укажите имя">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input required type="password" class="form-control" name="password" placeholder="Введите пароль">
+                        <input required type="password" class="form-control" name="password" placeholder="Укажите пароль">
                     </div>
-                    <button type="submit" class="btn btn-primary">Войти</button>
-                    <a class="btn btn-success" href="<c:url value='/reg'/>">Регистрация</a>
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
                     <c:if test="${not empty errorMessage}">
                         <div style="color:red; font-weight: bold; margin: 30px 0;">
                             <c:out value="${errorMessage}"/>
